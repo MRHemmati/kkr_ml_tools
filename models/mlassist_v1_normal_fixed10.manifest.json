@@ -1,0 +1,48 @@
+{
+  "model_id": "mlassist_v1_normal_fixed10",
+  "created": "2026-07-12T22:24:17",
+  "regime": "normal",
+  "window": {
+    "type": "fixed",
+    "T_OBS": 10
+  },
+  "delta3_aligned_window": false,
+  "estimator": "RandomForestClassifier",
+  "n_estimators": 400,
+  "class_weight": "balanced",
+  "seed": 0,
+  "sklearn_version": "1.9.0",
+  "numpy_version": "2.5.0",
+  "python": "3.12.12",
+  "feature_names": [
+    "logrms_0",
+    "logrms_last",
+    "logrms_mean",
+    "logrms_std",
+    "logrms_min",
+    "logrms_drop",
+    "logrms_slope",
+    "logchneut_last",
+    "logchneut_mean",
+    "tempr",
+    "tempr_missing",
+    "brymix",
+    "brymix_missing",
+    "strmix",
+    "strmix_missing"
+  ],
+  "classes": [
+    0,
+    1
+  ],
+  "positive_class": 1,
+  "n_train": 1830,
+  "conv_rate": 0.9049180327868852,
+  "oof_auc_5fold": 0.9437,
+  "training_data": "study_data/dedup_records.pkl (regime==normal, n_iters>=T+2)",
+  "training_data_sha256": "903689b18439cda90e7c31986044f7d9b94e4a0742273772f6d8dec5ea6f59ca",
+  "artifact_npz": "mlassist_v1_normal_fixed10.npz",
+  "artifact_sha256": "cebe56b9f35e4931069142f8a735ae291eab15796446fc5c3b1f94f6e327f549",
+  "golden_parity_max_abs": 0.0,
+  "deployment_note": "v1 seed. Per-campaign CONFORMAL calibration sets thresholds; cross-material transfer NOT claimed (deploy per-system). Inference needs numpy only."
+}

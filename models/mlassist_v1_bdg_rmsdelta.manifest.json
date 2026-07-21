@@ -1,0 +1,43 @@
+{
+  "model_id": "mlassist_v1_bdg_rmsdelta",
+  "created": "2026-07-14T13:40:19",
+  "regime": "BdG",
+  "window": {
+    "type": "fixed",
+    "T_OBS": 10
+  },
+  "n_features": 22,
+  "feature_names": [
+    "logrms_0",
+    "logrms_last",
+    "logrms_mean",
+    "logrms_std",
+    "logrms_min",
+    "logrms_drop",
+    "logrms_slope",
+    "logchneut_last",
+    "logchneut_mean",
+    "tempr",
+    "tempr_missing",
+    "brymix",
+    "brymix_missing",
+    "strmix",
+    "strmix_missing",
+    "logdelta_0",
+    "logdelta_last",
+    "logdelta_mean",
+    "logdelta_slope",
+    "logdelta_drop",
+    "delta_rel_range",
+    "delta_grew"
+  ],
+  "n_train": 641,
+  "conv_rate": 0.8517940717628705,
+  "oof_auc_5fold": 0.9571,
+  "sklearn_version": "1.9.0",
+  "artifact_sha256": "fd67c9a35b1928dfa8ff9d370e356750d5f496c835e603f8adbdcff1bb4798f5",
+  "training_data_sha256": "f3da615a2e2c8bf103c1b91d6334f72bbea92529959df4feccfe54fede0b3e39",
+  "golden_parity_max_abs": 2.7755575615628914e-17,
+  "calibration_seed": "641 \u0394-parseable within-BdG runs",
+  "note": "Vehicle-A model. Mondrian per-stratum conformal; deploy per-campaign."
+}
