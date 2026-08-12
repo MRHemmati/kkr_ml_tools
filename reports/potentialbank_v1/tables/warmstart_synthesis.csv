@@ -1,0 +1,16 @@
+family,material,cold_iters,warm_iters,saved,pct_saved,direction_symmetry,donor_choice,contour_caveat,source
+E1_NbSe2,Nb2Se4X2,391 (median),~197 (median),~194 median,~50%,"8/9 faster (1 slower, pair5)",n/a,coarse->fine staging offset for 5/9 pairs,E3b
+simple_metals,Al,66,4,62,94%,symmetric (F2b),d1==d2 (F2d),clean fine->fine (F2c),F2a/b/c/d
+simple_metals,Cu,81,7,74,91%,symmetric,d1==d2,clean fine->fine,F2a/b/c/d
+simple_metals,Ag,77,6,71,92%,symmetric,d1==d2,clean fine->fine,F2a/b/c/d
+simple_metals,Mo,102,6,96,94%,symmetric,d1==d2,clean fine->fine,F2a/b/c/d
+heavy_soc,Au/W/Pt/Sb/Pb,122-136,2-3,~127 median,~97%,forward (F2a); reverse skipped (chain1 warm-made),d1==d2 (F2d),clean fine->fine,F2a/F2d
+magnetic,Fe/Ni/Co,131-136,5-6,~126 median,~96%,symmetric both dir (F2b),d1==d2 (F2d),clean fine->fine; moments basin-matched,F2b/F2d
+covalent_emptysphere,Si,119,2,117,98%,symmetric (G4),n/a,clean fine->fine,G4
+covalent_emptysphere,Ge,117,3,114,97%,symmetric (G4),n/a,clean fine->fine,G4
+ordered_intermetallic,CuZn,132,5,127,96%,symmetric (I4),n/a,clean fine->fine (non-mag basin),I4
+ordered_intermetallic,Ni3Al,128,7,121,95%,symmetric,n/a,clean; non-mag basin,I4
+ordered_intermetallic,FeAl,152,5,147,97%,symmetric,n/a,clean; non-mag basin,I4
+metallic_layered_chalc,TiSe2,1188-1354,<=100,~1000+,~92%,direction-symmetric (R),n/a,COARSE only (fine destabilizes 0-gap semimetal),Stage R
+ionic_rocksalt,MgO,178 (broyden) / 750 (linear),6 (broyden) / 500 (linear),172 / 250,97% / 33%,"target-mixing dependent (broyden fast, linear slow)",n/a,coarse; warm-vs-cold matched per mixing,T-A3
+ionic_rocksalt,NaCl,171 (broyden) / 750 (linear),2 (broyden) / 500 (linear),169 / 250,99% / 33%,target-mixing dependent,n/a,coarse; matched per mixing,T-NaCl-WS

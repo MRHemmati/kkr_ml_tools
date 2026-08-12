@@ -1,0 +1,36 @@
+{
+  "model_id": "mlassist_v1_bdg_rms",
+  "created": "2026-07-14T13:40:25",
+  "regime": "BdG",
+  "window": {
+    "type": "fixed",
+    "T_OBS": 10
+  },
+  "n_features": 15,
+  "feature_names": [
+    "logrms_0",
+    "logrms_last",
+    "logrms_mean",
+    "logrms_std",
+    "logrms_min",
+    "logrms_drop",
+    "logrms_slope",
+    "logchneut_last",
+    "logchneut_mean",
+    "tempr",
+    "tempr_missing",
+    "brymix",
+    "brymix_missing",
+    "strmix",
+    "strmix_missing"
+  ],
+  "n_train": 641,
+  "conv_rate": 0.8517940717628705,
+  "oof_auc_5fold": 0.9463,
+  "sklearn_version": "1.9.0",
+  "artifact_sha256": "b73c14534c169ff80c150692b828f4959c6d2a135c819d2d5e1961c31a607c03",
+  "training_data_sha256": "6320616701aace8ebabde4970c4c32ef920479b01fa503ffaa7186d61161442a",
+  "golden_parity_max_abs": 0.0,
+  "calibration_seed": "641 \u0394-parseable within-BdG runs",
+  "note": "Vehicle-A model. Mondrian per-stratum conformal; deploy per-campaign."
+}

@@ -1,58 +1,75 @@
-## Installation
+# kkr_ml_tools — Calibrated convergence control for KKR / BdG Green's-function DFT
 
-1. Copy WorkChain to AiiDA's Python environment:
-   ```bash
-   cp ml_restart_protocol.py $(python -c "import site; print(site.getsitepackages())")/
-   verdi daemon restart
-   ```
+An AiiDA-native framework (`ml_assist`) that scores the first ten SCF iterations of a KKR / BdG
+Green's-function DFT run and can **abort doomed runs early**, under a **per-cohort conformal** early-abort
+policy. It ships a frozen pure-`numpy` scorer (the AiiDA daemon has no scikit-learn), a simple
+**RMS-at-iteration-10 baseline**, and per-stratum (Mondrian) thresholds. The design is opt-in with a
+zero-risk default: absent an `ml_assist` input the workchain behaves identically to stock `kkr_scf_wc`.
 
-2. Import the LSTM model node into your AiiDA profile:
-   ```bash
-   verdi archive import model_node_100933.aiida
-   # note the new PK printed — use it as builder.model_node = load_node(<new_pk>)
-   ```
+> **Honest headline (see the technical report).** On a 336-run leakage-clean held-out benchmark with
+> per-run `QBOUND` labels, the learned model does **not** beat the simple RMS@10 baseline on the primary
+> NbSe₂-normal cohort (held-out AUC 0.83 vs 0.90), does **not** transfer across materials, and a
+> NbSe₂-seeded conformal threshold does not transport (realized false-abort 0.47) — though **per-cohort
+> recalibration restores** false-abort control. Deployment therefore requires **per-cohort calibration**
+> and a **strong RMS baseline comparator**; the contribution is the calibrated, provenance-tracked
+> framework and the honest benchmark, not model superiority. A live Fe-only pilot validated the abort
+> *machinery* end-to-end (one true early abort saved ~130 SCF iterations; a would-be false abort correctly
+> withheld; N=5, descriptive).
+
+## Repository layout
 ```
-import model_node_100933.aiida:
-
-type         SinglefileData
-pk           100933
-uuid         9c7f4fd7-9396-4e55-8d34-d5a03c1db720
-label        KKR-SCF LSTM convergence predictor (T_obs=20)
-description  Trained on 2431 normal SCF KkrCalculation sequences. Input: first 20 steps of [log(rms), log(rms_spin), log(|charge_neutrality|)]. Output: log(remaining_iterations). Mean MAPR=+17.5% (LODO). Channels normalised with mean=[-6.29025936126709, -14.268150329589844, -6.470577716827393], std=[3.254223108291626, 6.328523635864258, 4.123773097991943].
-ctime        2026-05-26 10:09:08.250586+00:00
-mtime        2026-05-26 10:09:08.425981+00:00
+src/aiida_kkr_mlassist/   installable package (src-layout); pure-numpy core + AiiDA workchain
+                          entry points: kkr.mlassist, kkr.bdg; ships frozen models in models/
+tests/                    unit tests (feature parity, golden parity, ranks, conformal, Mondrian,
+                          cumulative trajectory, BdG dual-scoring, wrapper pipeline)
+models/                   frozen-model manifests, MODEL_CARD.md, model_node_uuids.json, MODEL_HASHES.txt
+                          (the .npz binaries themselves ship inside the package under src/.../models/)
+reports/
+  technical_report/       the accepted technical report: main.tex + main.pdf + make_figures_d1b.py
+                          + D1b metrics/scores (JSON/CSV) + figures/
+  stage_records/          key stage reports: final freeze, pilot closure, D0 inventory, D1 held-out
+                          replay, D1-QC, D1b clean benchmark, report-rewrite summary
+  potentialbank_v1/       PotentialBank v1 (L3): manifest + tables + figures + synthesis/claim-ladder reports
+src/kkr_convergence_advisor/   offline retrieval-based advisor; data/ = advisor_index_v1.json + example tips
+preregistrations/         PREREG_common + Vehicle A/B (historical; superseded — see the report)
+proposals/                project proposals (proposal_01 = ML-accelerated SCF convergence)
+legacy/lstm_restart/      the previous LSTM SCF-restart tool (preserved, superseded by this project)
 ```
 
-3. Install dependencies:
-   ```bash
-   pip install torch numpy  # CPU-only torch is sufficient
-   ```
+## PotentialBank v1 (L3 warm-start)
+Separate, complementary to `ml_assist` (L1): a **certified catalog of single-structure converged KKR
+potentials** for **same-structure SCF warm-start reuse** — **237 unique donors** (238 nodes) across **8
+families / 35 materials**, **33 F2-eligible**. Injecting a certified donor as the start potential cuts
+iterations-to-converge by ~91–99% on a converging target (per-family, mixing/contour-qualified;
+donor-choice-independent). Admission is byte-exact E1 certification (Z-sequence, NATYP, non-CPA/BdG, 3-way
+SHA). **Same-structure reuse only — no cross-material transfer, no guaranteed acceleration; CPA/BdG out of
+scope.** See [`POTENTIALBANK_V1.md`](POTENTIALBANK_V1.md) and `reports/potentialbank_v1/`.
 
-## Usage
-See usage example in ml_restart_protocol.py (bottom of file).
-# Minimal usage 
-``` python
-from ml_restart_protocol import MLRestartProtocol
-from aiida.orm import load_node, Dict
-from aiida.engine import submit
-
-builder = MLRestartProtocol.get_builder()
-
-# kkr_scf_wc inputs
-builder.kkr_scf.voronoi         = <voronoi_code>
-builder.kkr_scf.kkr             = <kkr_code>
-builder.kkr_scf.structure       = <StructureData>
-builder.kkr_scf.calc_parameters = Dict(dict={
-    'LMAX': 2, 'RCLUSTZ': 0.85, 'NSPIN': 2,
-    'RMAX': 10, 'GMAX': 100, 'BRYMIX': 0.01,
-})
-builder.kkr_scf.wf_parameters   = <wf_params_Dict>
-builder.kkr_scf.options         = Dict(dict={...})
-
-# ML inputs — update model_node PK after importing the archive
-builder.model_node        = load_node(<pk_after_import>)
-builder.max_restarts      = orm.Int(3)
-builder.restart_threshold = orm.Int(30)   # tune per system
-
-wc = submit(MLRestartProtocol, **builder)
+## Install (development)
+```bash
+pip install -e .              # numpy-only runtime; [aiida]/[dev] extras for the workchain + tests
 ```
+The runtime inference core (`features`, `infer`, `conformal`, `ranks`, `decision`) imports **without**
+AiiDA or scikit-learn; the workchain (`workchain.py`) imports `aiida_kkr` only inside the daemon.
+
+## Frozen models
+| model | role | in-dist. AUC | sha256 (see `models/MODEL_HASHES.txt`) |
+|---|---|---|---|
+| `mlassist_v1_normal_fixed10` | normal-state scorer | 0.944 (in-dist; 0.83 held-out primary) | `cebe56b9…` |
+| `mlassist_v1_bdg_rmsdelta` | BdG primary (rms+Δ) | 0.957 | `fd67c9a3…` |
+| `mlassist_v1_bdg_rms` | BdG missing-Δ fallback | 0.946 | `b73c1453…` |
+Weights are frozen and were unchanged through all held-out and pilot evaluations. **BdG runs must be
+scored with the BdG model**, never the normal one.
+
+## Scope & limits
+- Deploy **per-system / per-cohort**; recalibrate the conformal threshold on each campaign's own converged
+  runs and benchmark model vs. RMS@10 before enabling abort.
+- **No cross-material transfer** is claimed. Warm/restart runs are **outside** the current abort policy.
+- Dataset scope: completed runs (crashes/NaN-kills are censored and handled by a watchdog, not the model).
+- Late-stall detection is the open modeling gap.
+
+## Provenance
+See `reports/technical_report/main.pdf` for the full account (data audit, classifier, conformal policy,
+held-out benchmark, live pilot, BdG workflow hardening + memory number, package, pre-registration). The
+prior LSTM restart tool is retained under `legacy/lstm_restart/` and tagged by branch
+`legacy-lstm-restart-20260721`.

@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aiida-kkr-mlassist"
+version = "0.1.1"
+description = "Opt-in ML-assisted SCF-convergence control (early-abort L1) for aiida-kkr."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Mohammad Hemmati" }]
+keywords = ["aiida", "kkr", "dft", "scf", "machine-learning", "conformal"]
+# Runtime inference needs ONLY numpy (the AiiDA daemon has no sklearn). AiiDA is a peer, not a
+# hard dep, so the pure-numpy core imports without it.
+dependencies = ["numpy>=1.21"]
+
+[project.optional-dependencies]
+aiida = ["aiida-core>=2.5", "aiida-kkr>=2.3"]
+dev = ["scikit-learn>=1.3", "pytest"]
+
+# The WorkChain is discovered by AiiDA via this entry point (loaded in the daemon env, which has aiida-kkr).
+[project.entry-points."aiida.workflows"]
+"kkr.mlassist" = "aiida_kkr_mlassist.workchain:MLAssistKkrScfWorkChain"
+"kkr.bdg" = "aiida_kkr_mlassist.kkr_bdg_wc:kkr_bdg_wc"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+aiida_kkr_mlassist = ["models/*.npz", "models/*.json", "models/*.md"]
+kkr_convergence_advisor = ["data/*.json", "README.md"]

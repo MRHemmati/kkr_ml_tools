@@ -1,0 +1,766 @@
+{
+  "version": "v1",
+  "generated_for": "Stage U synthesis (offline, not installed)",
+  "certified_donor_nodes": 238,
+  "unique_sha_donors": 237,
+  "note": "238 certified nodes = 237 unique (E1 Bi2X4 pk24009/24011 byte-dup). Same-structure reuse only; NOT cross-material transfer.",
+  "n_materials": 35,
+  "n_families": 8,
+  "materials": [
+    {
+      "family": "E1_NbSe2_Bi",
+      "material": "Bi12Nb40X32",
+      "n_unique_donors": 1,
+      "donor_sha256": [
+        "6cf84b4eb951246f"
+      ],
+      "compat_class": "{\"code_family\": \"standard\", \"nspin\": 1, \"soc\": false, \"cpa\": false, \"lmax\": \"3\", \"ncheb\": null, \"mesh\": \"[484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 524, 578, 552, 578, 579, 573, 580, 579, 630, 639, 639, 654, 616, 654, 641, 711, 711, 690, 691, 690, 536, 591, 537, 591, 573, 568, 568, 573, 484, 484, 484, 484, 484, 484, 484, 484]\"}",
+      "nspin": "1",
+      "soc": "False",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": false,
+      "warmstart": null
+    },
+    {
+      "family": "E1_NbSe2_Bi",
+      "material": "Bi14X4",
+      "n_unique_donors": 2,
+      "donor_sha256": [
+        "123b79cd6c909337",
+        "c5d234ec6dc73dce"
+      ],
+      "compat_class": "{\"code_family\": \"standard\", \"nspin\": 2, \"soc\": false, \"cpa\": false, \"lmax\": \"3\", \"ncheb\": null, \"mesh\": \"[609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609]\"}",
+      "nspin": "2",
+      "soc": "False",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": null
+    },
+    {
+      "family": "E1_NbSe2_Bi",
+      "material": "Bi16X4",
+      "n_unique_donors": 2,
+      "donor_sha256": [
+        "546f6be003bb9eab",
+        "f70d7b7af4291749"
+      ],
+      "compat_class": "{\"code_family\": \"standard\", \"nspin\": 2, \"soc\": true, \"cpa\": false, \"lmax\": \"3\", \"ncheb\": \"12\", \"mesh\": \"[609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609]\"}",
+      "nspin": "2",
+      "soc": "True",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": null
+    },
+    {
+      "family": "E1_NbSe2_Bi",
+      "material": "Bi16X8",
+      "n_unique_donors": 1,
+      "donor_sha256": [
+        "40906698e6999b5b"
+      ],
+      "compat_class": "{\"code_family\": \"standard\", \"nspin\": 2, \"soc\": true, \"cpa\": false, \"lmax\": \"3\", \"ncheb\": \"12\", \"mesh\": \"[609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609]\"}",
+      "nspin": "2",
+      "soc": "True",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": false,
+      "warmstart": null
+    },
+    {
+      "family": "E1_NbSe2_Bi",
+      "material": "Bi2",
+      "n_unique_donors": 6,
+      "donor_sha256": [
+        "2c69793d85500343",
+        "3955036f6e856682",
+        "5aec09ac37b85acc",
+        "94acf62781c4f30d",
+        "ae94185c86efc750",
+        "c450bf83d9f07ca9"
+      ],
+      "compat_class": "{\"code_family\": \"standard\", \"nspin\": 2, \"soc\": false, \"cpa\": false, \"lmax\": \"3\", \"ncheb\": null, \"mesh\": \"[615, 615]\"}",
+      "nspin": "2",
+      "soc": "False",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": null
+    },
+    {
+      "family": "E1_NbSe2_Bi",
+      "material": "Bi2Te3",
+      "n_unique_donors": 2,
+      "donor_sha256": [
+        "1e02b7fe11c30702",
+        "df0650a21f0ff6b4"
+      ],
+      "compat_class": "{\"code_family\": \"standard\", \"nspin\": 2, \"soc\": false, \"cpa\": false, \"lmax\": \"3\", \"ncheb\": null, \"mesh\": \"[604, 604, 640, 640, 584]\"}",
+      "nspin": "2",
+      "soc": "False",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": null
+    },
+    {
+      "family": "E1_NbSe2_Bi",
+      "material": "Bi2X4",
+      "n_unique_donors": 23,
+      "donor_sha256": [
+        "0a412e6a33ba8e14",
+        "0ea12eb558480701",
+        "0fe18594e4147b3a",
+        "186fc4105b1c82a2",
+        "377f6621110416e6",
+        "3dc2d24002c11b1c"
+      ],
+      "compat_class": "{\"code_family\": \"standard\", \"nspin\": 2, \"soc\": true, \"cpa\": false, \"lmax\": \"3\", \"ncheb\": \"12\", \"mesh\": \"[609, 609, 609, 609, 609, 609]\"}",
+      "nspin": "2",
+      "soc": "True",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": null
+    },
+    {
+      "family": "E1_NbSe2_Bi",
+      "material": "Bi2X6",
+      "n_unique_donors": 11,
+      "donor_sha256": [
+        "10d1926d065d5e51",
+        "202cc479cf2696a2",
+        "3f8e55f8139d0d6a",
+        "456928b9c08fe28b",
+        "4c6eb9ff0a17cb13",
+        "7d6c11a057517ad6"
+      ],
+      "compat_class": "{\"code_family\": \"standard\", \"nspin\": 2, \"soc\": true, \"cpa\": false, \"lmax\": \"3\", \"ncheb\": \"12\", \"mesh\": \"[615, 615, 615, 615, 615, 615, 615, 615]\"}",
+      "nspin": "2",
+      "soc": "True",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": null
+    },
+    {
+      "family": "E1_NbSe2_Bi",
+      "material": "Bi2X8",
+      "n_unique_donors": 2,
+      "donor_sha256": [
+        "ce5b2b06c2e0342a",
+        "d127b6219ce15070"
+      ],
+      "compat_class": "{\"code_family\": \"standard\", \"nspin\": 2, \"soc\": true, \"cpa\": false, \"lmax\": \"3\", \"ncheb\": \"12\", \"mesh\": \"[623, 623, 623, 623, 623, 623, 623, 623, 623, 623]\"}",
+      "nspin": "2",
+      "soc": "True",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": null
+    },
+    {
+      "family": "E1_NbSe2_Bi",
+      "material": "Bi3X6",
+      "n_unique_donors": 6,
+      "donor_sha256": [
+        "0b7f784ddd960faa",
+        "23355e0ea8243b20",
+        "261c38ecbf5e1110",
+        "544e8356238c9452",
+        "d9f18ffddfec770d",
+        "dac84413826e5bdb"
+      ],
+      "compat_class": "{\"code_family\": \"standard\", \"nspin\": 2, \"soc\": true, \"cpa\": false, \"lmax\": \"3\", \"ncheb\": \"12\", \"mesh\": \"[615, 615, 615, 615, 615, 615, 615, 615, 615]\"}",
+      "nspin": "2",
+      "soc": "True",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": null
+    },
+    {
+      "family": "E1_NbSe2_Bi",
+      "material": "Bi4X4",
+      "n_unique_donors": 30,
+      "donor_sha256": [
+        "034ea9b64f76fe00",
+        "04641f32fc84d5d2",
+        "10e621ae45fc0bd5",
+        "1226ac38ed8d9c1c",
+        "13075a2d839ed345",
+        "1559b4d9ea1cc059"
+      ],
+      "compat_class": "{\"code_family\": \"standard\", \"nspin\": 2, \"soc\": true, \"cpa\": false, \"lmax\": \"3\", \"ncheb\": \"12\", \"mesh\": \"[609, 609, 609, 609, 609, 609, 609, 609]\"}",
+      "nspin": "2",
+      "soc": "True",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": null
+    },
+    {
+      "family": "E1_NbSe2_Bi",
+      "material": "Nb16",
+      "n_unique_donors": 4,
+      "donor_sha256": [
+        "490506db6283f7c2",
+        "5b73df3fd827b2cb",
+        "642f20492c0b9aaa",
+        "86eab81269419820"
+      ],
+      "compat_class": "{\"code_family\": \"standard\", \"nspin\": 1, \"soc\": false, \"cpa\": false, \"lmax\": \"3\", \"ncheb\": null, \"mesh\": \"[484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484]\"}",
+      "nspin": "1",
+      "soc": "False",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": null
+    },
+    {
+      "family": "E1_NbSe2_Bi",
+      "material": "Nb2Se4X10",
+      "n_unique_donors": 4,
+      "donor_sha256": [
+        "15f3d3cfe234cdcc",
+        "41fb6faf9c1b28de",
+        "a5121c5c332d3d75",
+        "e824d219507b4125"
+      ],
+      "compat_class": "{\"code_family\": \"standard\", \"nspin\": 2, \"soc\": true, \"cpa\": false, \"lmax\": \"3\", \"ncheb\": \"12\", \"mesh\": \"[534, 563, 548, 563, 534, 563, 548, 563, 534, 563, 548, 563, 534, 563, 548, 563]\"}",
+      "nspin": "2",
+      "soc": "True",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": null
+    },
+    {
+      "family": "E1_NbSe2_Bi",
+      "material": "Nb2Se4X2",
+      "n_unique_donors": 66,
+      "donor_sha256": [
+        "0dc070c7a612b2fb",
+        "0dcd3308535f3974",
+        "1e668fa6de1e7422",
+        "1e85edd17cf17902",
+        "234d1dfe0c82de1b",
+        "2619a684cf28cb0a"
+      ],
+      "compat_class": "{\"code_family\": \"standard\", \"nspin\": 2, \"soc\": false, \"cpa\": false, \"lmax\": \"2\", \"ncheb\": null, \"mesh\": \"[548, 548, 563, 563, 563, 563, 534, 534]\"}",
+      "nspin": "2",
+      "soc": "False",
+      "lmax": "2",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": {
+        "cold": "391 (median)",
+        "warm": "~197 (median)",
+        "saved": "~194 median",
+        "pct": "~50%",
+        "contour_caveat": "coarse->fine staging offset for 5/9 pairs"
+      }
+    },
+    {
+      "family": "covalent_emptysphere",
+      "material": "Ge",
+      "n_unique_donors": 2,
+      "donor_sha256": [
+        "8fe7b1bb19cfe57e",
+        "b42ccd6e89b58f65"
+      ],
+      "compat_class": "nspin1_lmax2_soc0_emptysphere",
+      "nspin": "1",
+      "soc": "False",
+      "lmax": "2",
+      "empty_sphere": "True",
+      "f2_eligible": true,
+      "warmstart": {
+        "cold": "117",
+        "warm": "3",
+        "saved": "114",
+        "pct": "97%",
+        "contour_caveat": "clean fine->fine"
+      }
+    },
+    {
+      "family": "covalent_emptysphere",
+      "material": "Si",
+      "n_unique_donors": 2,
+      "donor_sha256": [
+        "0f3913cc1b1ab178",
+        "516cb5bf44833874"
+      ],
+      "compat_class": "nspin1_lmax2_soc0_emptysphere",
+      "nspin": "1",
+      "soc": "False",
+      "lmax": "2",
+      "empty_sphere": "True",
+      "f2_eligible": true,
+      "warmstart": {
+        "cold": "119",
+        "warm": "2",
+        "saved": "117",
+        "pct": "98%",
+        "contour_caveat": "clean fine->fine"
+      }
+    },
+    {
+      "family": "heavy_soc",
+      "material": "Au",
+      "n_unique_donors": 5,
+      "donor_sha256": [
+        "036466680566242c",
+        "11a758a1dcbbe896",
+        "546e97df6c2b0ddc",
+        "6bc1ec5cf1547403",
+        "a56994bab9915c9a"
+      ],
+      "compat_class": "nspin2_lmax3_soc1",
+      "nspin": "2",
+      "soc": "True",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": null
+    },
+    {
+      "family": "heavy_soc",
+      "material": "Pb",
+      "n_unique_donors": 5,
+      "donor_sha256": [
+        "0d33bd0199d071cc",
+        "1fc383ac506f5693",
+        "2f0df090cd65a24b",
+        "38c0203f38673a44",
+        "8c7addf5b269fac6"
+      ],
+      "compat_class": "nspin2_lmax3_soc1",
+      "nspin": "2",
+      "soc": "True",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": null
+    },
+    {
+      "family": "heavy_soc",
+      "material": "Pt",
+      "n_unique_donors": 4,
+      "donor_sha256": [
+        "29461967021c8619",
+        "4d495cea4b706679",
+        "f9c12bd411b9b09b",
+        "fa55c03c1a97ccd1"
+      ],
+      "compat_class": "nspin2_lmax3_soc1",
+      "nspin": "2",
+      "soc": "True",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": null
+    },
+    {
+      "family": "heavy_soc",
+      "material": "Sb",
+      "n_unique_donors": 5,
+      "donor_sha256": [
+        "2b5a3a8345f27195",
+        "36eb45adc15970cc",
+        "9297bbe80c28dbb3",
+        "d09f3d95d7ba4c49",
+        "e1e2002d49490d97"
+      ],
+      "compat_class": "nspin2_lmax3_soc1",
+      "nspin": "2",
+      "soc": "True",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": null
+    },
+    {
+      "family": "heavy_soc",
+      "material": "W",
+      "n_unique_donors": 5,
+      "donor_sha256": [
+        "352860fbdf1e204d",
+        "4cf5057a64eb41fe",
+        "5ee1178c8ff17cea",
+        "96ffedd23964c9ca",
+        "bb6d92f32de2a882"
+      ],
+      "compat_class": "nspin2_lmax3_soc1",
+      "nspin": "2",
+      "soc": "True",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": null
+    },
+    {
+      "family": "ionic_rocksalt",
+      "material": "MgO",
+      "n_unique_donors": 2,
+      "donor_sha256": [
+        "1858f32c7b436096",
+        "917b3bea0e6511c7"
+      ],
+      "compat_class": "nspin1_lmax2_soc0",
+      "nspin": "1",
+      "soc": "False",
+      "lmax": "2",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": {
+        "cold": "178 (broyden) / 750 (linear)",
+        "warm": "6 (broyden) / 500 (linear)",
+        "saved": "172 / 250",
+        "pct": "97% / 33%",
+        "contour_caveat": "coarse; warm-vs-cold matched per mixing"
+      }
+    },
+    {
+      "family": "ionic_rocksalt",
+      "material": "NaCl",
+      "n_unique_donors": 2,
+      "donor_sha256": [
+        "68ccf55e5ea22255",
+        "cb742fd6cb1753b2"
+      ],
+      "compat_class": "nspin1_lmax2_soc0",
+      "nspin": "1",
+      "soc": "False",
+      "lmax": "2",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": {
+        "cold": "171 (broyden) / 750 (linear)",
+        "warm": "2 (broyden) / 500 (linear)",
+        "saved": "169 / 250",
+        "pct": "99% / 33%",
+        "contour_caveat": "coarse; matched per mixing"
+      }
+    },
+    {
+      "family": "magnetic",
+      "material": "Co",
+      "n_unique_donors": 3,
+      "donor_sha256": [
+        "3511c246fd5cd95c",
+        "4f345e46cfdc6a4d",
+        "58785623e113764e"
+      ],
+      "compat_class": "nspin2_lmax3_soc0",
+      "nspin": "2",
+      "soc": "False",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": null
+    },
+    {
+      "family": "magnetic",
+      "material": "Fe",
+      "n_unique_donors": 5,
+      "donor_sha256": [
+        "11f2b98b4eaa45d6",
+        "393d6786a3c0e60f",
+        "c6313f0432429008",
+        "ea382d7500548280",
+        "fd8c44eccbae8220"
+      ],
+      "compat_class": "nspin2_lmax3_soc0",
+      "nspin": "2",
+      "soc": "False",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": null
+    },
+    {
+      "family": "magnetic",
+      "material": "Ni",
+      "n_unique_donors": 5,
+      "donor_sha256": [
+        "3fc3d1938da4bdac",
+        "71d51fed9f498bb1",
+        "8af410274d25802c",
+        "d1918cee507e1abd",
+        "e5bfddc1ca17e9d8"
+      ],
+      "compat_class": "nspin2_lmax3_soc0",
+      "nspin": "2",
+      "soc": "False",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": null
+    },
+    {
+      "family": "metallic_layered_chalcogenide",
+      "material": "TiSe2",
+      "n_unique_donors": 2,
+      "donor_sha256": [
+        "07813af15159cbdb",
+        "f2568fe88d21ca04"
+      ],
+      "compat_class": "nspin1_lmax3_soc0_layered",
+      "nspin": "",
+      "soc": "False",
+      "lmax": "",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": {
+        "cold": "1188-1354",
+        "warm": "<=100",
+        "saved": "~1000+",
+        "pct": "~92%",
+        "contour_caveat": "COARSE only (fine destabilizes 0-gap semimetal)"
+      }
+    },
+    {
+      "family": "ordered_intermetallic",
+      "material": "CuZn",
+      "n_unique_donors": 2,
+      "donor_sha256": [
+        "1bb5152842e4c37d",
+        "a443347ff1e30d7e"
+      ],
+      "compat_class": "nspin1_lmax3_soc0",
+      "nspin": "1",
+      "soc": "False",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": {
+        "cold": "132",
+        "warm": "5",
+        "saved": "127",
+        "pct": "96%",
+        "contour_caveat": "clean fine->fine (non-mag basin)"
+      }
+    },
+    {
+      "family": "ordered_intermetallic",
+      "material": "FeAl",
+      "n_unique_donors": 2,
+      "donor_sha256": [
+        "46155795fc507eac",
+        "cb5b73c6452527fd"
+      ],
+      "compat_class": "nspin2_lmax3_soc0",
+      "nspin": "2",
+      "soc": "False",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": {
+        "cold": "152",
+        "warm": "5",
+        "saved": "147",
+        "pct": "97%",
+        "contour_caveat": "clean; non-mag basin"
+      }
+    },
+    {
+      "family": "ordered_intermetallic",
+      "material": "Ni3Al",
+      "n_unique_donors": 2,
+      "donor_sha256": [
+        "24882aec97180e80",
+        "6b598f9c0deeac80"
+      ],
+      "compat_class": "nspin2_lmax3_soc0",
+      "nspin": "2",
+      "soc": "False",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": {
+        "cold": "128",
+        "warm": "7",
+        "saved": "121",
+        "pct": "95%",
+        "contour_caveat": "clean; non-mag basin"
+      }
+    },
+    {
+      "family": "simple_metals",
+      "material": "Ag",
+      "n_unique_donors": 5,
+      "donor_sha256": [
+        "5b8bdb57f72fa032",
+        "764639c7c306cf73",
+        "7af979e80271beef",
+        "8cb7d97d4625a01e",
+        "eeeeeb8adb316326"
+      ],
+      "compat_class": "nspin1_lmax3_soc0",
+      "nspin": "1",
+      "soc": "False",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": {
+        "cold": "77",
+        "warm": "6",
+        "saved": "71",
+        "pct": "92%",
+        "contour_caveat": "clean fine->fine"
+      }
+    },
+    {
+      "family": "simple_metals",
+      "material": "Al",
+      "n_unique_donors": 5,
+      "donor_sha256": [
+        "5622fa1b5939e879",
+        "6bd6cd28aef4fcbb",
+        "6efa47da7fcb6566",
+        "91d5eee202d55423",
+        "c3c959cbe2ae80c6"
+      ],
+      "compat_class": "nspin1_lmax2_soc0",
+      "nspin": "1",
+      "soc": "False",
+      "lmax": "2",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": {
+        "cold": "66",
+        "warm": "4",
+        "saved": "62",
+        "pct": "94%",
+        "contour_caveat": "clean fine->fine (F2c)"
+      }
+    },
+    {
+      "family": "simple_metals",
+      "material": "Cu",
+      "n_unique_donors": 5,
+      "donor_sha256": [
+        "12e31e085f41bacd",
+        "2cdc8c443e39770b",
+        "7741cea71356187f",
+        "8456e034630a0f6e",
+        "d3035f6a48409ee8"
+      ],
+      "compat_class": "nspin1_lmax3_soc0",
+      "nspin": "1",
+      "soc": "False",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": {
+        "cold": "81",
+        "warm": "7",
+        "saved": "74",
+        "pct": "91%",
+        "contour_caveat": "clean fine->fine"
+      }
+    },
+    {
+      "family": "simple_metals",
+      "material": "Mo",
+      "n_unique_donors": 5,
+      "donor_sha256": [
+        "2d9e3f14ac599f5a",
+        "2fd11523ffa350fe",
+        "97120fc27c79b930",
+        "c08508a4d1ab2ef5",
+        "c9bef0206cfdb3d7"
+      ],
+      "compat_class": "nspin1_lmax3_soc0",
+      "nspin": "1",
+      "soc": "False",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": {
+        "cold": "102",
+        "warm": "6",
+        "saved": "96",
+        "pct": "94%",
+        "contour_caveat": "clean fine->fine"
+      }
+    },
+    {
+      "family": "simple_metals",
+      "material": "Nb",
+      "n_unique_donors": 4,
+      "donor_sha256": [
+        "5ef36af138597d19",
+        "85dd2745400c7d28",
+        "93ef61898dd3426a",
+        "f67d266c9e6baa51"
+      ],
+      "compat_class": "nspin1_lmax3_soc0",
+      "nspin": "1",
+      "soc": "False",
+      "lmax": "3",
+      "empty_sphere": "False",
+      "f2_eligible": true,
+      "warmstart": null
+    }
+  ],
+  "parked_warnings": [
+    {
+      "material": "MoS2",
+      "klass": "layered chalcogenide",
+      "warning": "acute primitive AND conventional cell both NACLSD (1502/1615); layered stacking density",
+      "stage": "Stage S/T"
+    },
+    {
+      "material": "WSe2",
+      "klass": "layered SOC chalcogenide",
+      "warning": "setup OK (NACLSD cleared @1.0) but SCF unstable (contour/EMIN, charge-neut bounces) + ~70min/iter; process paused 122051",
+      "stage": "Stage S"
+    },
+    {
+      "material": "NbS2",
+      "klass": "layered chalcogenide",
+      "warning": "NACLSD solved @RCLUSTZ1.0 but donor won't converge + expensive ~900s/iter",
+      "stage": "Stage R"
+    },
+    {
+      "material": "TaS2",
+      "klass": "layered chalcogenide",
+      "warning": "SOC removed NaN but SCF NaN-prone under broadening",
+      "stage": "Stage R"
+    },
+    {
+      "material": "TiAl",
+      "klass": "ordered intermetallic",
+      "warning": "VERTEX3D tetragonal WS-vertex degeneracy; RCLUSTZ- and tol(1e-4)-independent; 1e-3 breaks voronoi",
+      "stage": "Stage I5/I6"
+    },
+    {
+      "material": "Bi2Te3",
+      "klass": "heavy-SOC compound",
+      "warning": "hard-convergence; 127 iters coarse rms 0.065, never fine (standalone donor-gen)",
+      "stage": "Stage F1n"
+    },
+    {
+      "material": "Bi2Se3",
+      "klass": "heavy-SOC compound",
+      "warning": "expected Bi2Te3-class hard-convergence; not attempted",
+      "stage": "Stage MP"
+    },
+    {
+      "material": "CaF2",
+      "klass": "ionic fluorite",
+      "warning": "needs octahedral empty sphere; deferred vs simplest rocksalt",
+      "stage": "Stage J0"
+    },
+    {
+      "material": "LiF",
+      "klass": "ionic rocksalt",
+      "warning": "no-ES OK but Z=3 very light + 8.7 eV gap; tertiary, not run",
+      "stage": "Stage J0"
+    }
+  ]
+}

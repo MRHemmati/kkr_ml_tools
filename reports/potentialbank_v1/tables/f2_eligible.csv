@@ -1,0 +1,34 @@
+family,material,n_unique_donors,warmstart_measured
+E1_NbSe2_Bi,Bi14X4,2,"no (E1 historical, not benchmarked in this campaign)"
+E1_NbSe2_Bi,Bi16X4,2,"no (E1 historical, not benchmarked in this campaign)"
+E1_NbSe2_Bi,Bi2,6,"no (E1 historical, not benchmarked in this campaign)"
+E1_NbSe2_Bi,Bi2Te3,2,"no (E1 historical, not benchmarked in this campaign)"
+E1_NbSe2_Bi,Bi2X4,23,"no (E1 historical, not benchmarked in this campaign)"
+E1_NbSe2_Bi,Bi2X6,11,"no (E1 historical, not benchmarked in this campaign)"
+E1_NbSe2_Bi,Bi2X8,2,"no (E1 historical, not benchmarked in this campaign)"
+E1_NbSe2_Bi,Bi3X6,6,"no (E1 historical, not benchmarked in this campaign)"
+E1_NbSe2_Bi,Bi4X4,30,"no (E1 historical, not benchmarked in this campaign)"
+E1_NbSe2_Bi,Nb16,4,"no (E1 historical, not benchmarked in this campaign)"
+E1_NbSe2_Bi,Nb2Se4X10,4,"no (E1 historical, not benchmarked in this campaign)"
+E1_NbSe2_Bi,Nb2Se4X2,66,"no (E1 historical, not benchmarked in this campaign)"
+covalent_emptysphere,Ge,2,YES
+covalent_emptysphere,Si,2,YES
+heavy_soc,Au,5,YES
+heavy_soc,Pb,5,YES
+heavy_soc,Pt,4,YES
+heavy_soc,Sb,5,YES
+heavy_soc,W,5,YES
+ionic_rocksalt,MgO,2,YES
+ionic_rocksalt,NaCl,2,YES
+magnetic,Co,3,YES
+magnetic,Fe,5,YES
+magnetic,Ni,5,YES
+metallic_layered_chalcogenide,TiSe2,2,YES
+ordered_intermetallic,CuZn,2,YES
+ordered_intermetallic,FeAl,2,YES
+ordered_intermetallic,Ni3Al,2,YES
+simple_metals,Ag,5,YES
+simple_metals,Al,5,YES
+simple_metals,Cu,5,YES
+simple_metals,Mo,5,YES
+simple_metals,Nb,4,YES

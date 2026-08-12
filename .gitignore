@@ -1,0 +1,50 @@
+# OS / editor
+.DS_Store
+*.swp
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# LaTeX build artifacts (keep .tex, .pdf, figures)
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# Scratch / local
+scratch/
+tmp/
+*.tmp
+
+# Credentials / AiiDA runtime (never commit)
+.aiida/
+*.aiida_config
+config.json
+*.key
+*.pem
+
+# Large raw data dumps (not tracked; see models/ manifests + package .npz)
+*.pkl
+*.pkl.gz
+*.pt
+kkr_scf_full_dataset*
+# (frozen model .npz shipped inside the package are force-added; see below)
+!src/aiida_kkr_mlassist/models/*.npz
