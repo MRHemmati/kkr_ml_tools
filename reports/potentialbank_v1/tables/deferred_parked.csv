@@ -1,0 +1,10 @@
+material,klass,reason,stage
+MoS2,layered chalcogenide,acute primitive AND conventional cell both NACLSD (1502/1615); layered stacking density,Stage S/T
+WSe2,layered SOC chalcogenide,"setup OK (NACLSD cleared @1.0) but SCF unstable (contour/EMIN, charge-neut bounces) + ~70min/iter; process paused 122051",Stage S
+NbS2,layered chalcogenide,NACLSD solved @RCLUSTZ1.0 but donor won't converge + expensive ~900s/iter,Stage R
+TaS2,layered chalcogenide,SOC removed NaN but SCF NaN-prone under broadening,Stage R
+TiAl,ordered intermetallic,VERTEX3D tetragonal WS-vertex degeneracy; RCLUSTZ- and tol(1e-4)-independent; 1e-3 breaks voronoi,Stage I5/I6
+Bi2Te3,heavy-SOC compound,"hard-convergence; 127 iters coarse rms 0.065, never fine (standalone donor-gen)",Stage F1n
+Bi2Se3,heavy-SOC compound,expected Bi2Te3-class hard-convergence; not attempted,Stage MP
+CaF2,ionic fluorite,needs octahedral empty sphere; deferred vs simplest rocksalt,Stage J0
+LiF,ionic rocksalt,"no-ES OK but Z=3 very light + 8.7 eV gap; tertiary, not run",Stage J0

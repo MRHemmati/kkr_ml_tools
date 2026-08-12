@@ -60,7 +60,9 @@ three \emph{acceleration levers}:
   \item[L3 --- warm start] reuse a converged potential to halve iterations.
 \end{description}
 This report covers the \textbf{v1 deliverable (L1)}, fully built and validated, plus the infrastructure
-(feature schema, frozen models, conformal policy, package, workchain hardening) that L2/L3 will reuse.
+(feature schema, frozen models, conformal policy, package, workchain hardening) that L2/L3 reuse. \textbf{L3
+(warm start) is now realized as PotentialBank~v1} (Sec.~\ref{sec:potbank}): a certified catalog of
+single-structure converged potentials with measured same-structure warm-start savings.
 
 \paragraph{Design principles.} (1) \emph{Opt-in, zero-risk default}: absent an \code{ml\_assist} input the
 workchain behaves identically to stock. (2) \emph{Advisory by default}; abort only when explicitly enabled
@@ -463,6 +465,59 @@ recording feature schema, training-data hash, library versions, and out-of-sampl
 (Appendix~\ref{app:prov}). The Replay-OOF Invariant, the two-denominator reporting rule, and the
 negatives-are-publishable pre-commitment are the standing methodological safeguards.
 
+\section{PotentialBank v1: L3 warm-start realized}
+\label{sec:potbank}
+The L3 lever --- reuse a converged potential instead of a cold Voronoi start --- is realized as
+\textbf{PotentialBank~v1}: a provenance-clean catalog of certified single-structure converged KKR potentials,
+each carrying a byte-exact compatibility fingerprint. A donor is admitted only if it passes \emph{E1
+certification} verbatim: the parser succeeds and byte-exactly round-trips, the potential's per-type
+$Z$-sequence matches the structure site order (empty spheres as $Z{=}0$), $\mathrm{NATYP}$ equals the site
+count, the cell is non-CPA and non-BdG, NSPIN/SOC/LMAX/mesh parse, no mapping is guessed, and the staged,
+AiiDA-retrieved, and manifest SHA-256 all agree. CPA, disordered, and BdG potentials are \emph{excluded by
+construction}.
+
+\paragraph{Coverage.} v1 contains \textbf{238 certified donor nodes = 237 unique-SHA donors} (one recorded
+byte-duplicate: E1 Bi$_2$X$_4$ pk~24009$\equiv$24011), spanning \textbf{8 families, 35 materials, 42
+compatibility classes}, of which \textbf{33 materials are F2-eligible} ($\ge 2$ independent certified donors):
+NbSe$_2$/Bi (E1, 160 donors), simple metals Nb/Al/Cu/Ag/Mo (24), heavy-SOC Au/W/Pt/Sb/Pb (24), magnetic
+Fe/Ni/Co (13), ordered intermetallics CuZn/Ni$_3$Al/FeAl (6), covalent empty-sphere Si/Ge (4), the metallic
+layered chalcogenide TiSe$_2$ (2), and ionic rocksalt MgO/NaCl (4). Each family required its own certified
+settings recipe (screening cluster RCLUSTZ, Chebyshev log panel R\_LOG/NPAN, BZ mesh, SOC key routing,
+explicit empty-sphere mapping, and a mixing-path variation to obtain independent F2 pairs for deterministic
+insulator SCF).
+
+\paragraph{Warm-start savings (same-structure).} Injecting a certified donor as the start potential cuts
+iterations-to-converge by large, reproducible margins, \emph{donor-choice-independent} (33/33 targets:
+identical iterations from either donor) and direction-symmetric where cold-comparable:
+\begin{center}\small
+\begin{tabular}{lccc}
+\toprule
+family & cold iters & warm iters & \% saved \\
+\midrule
+simple metals & 66--102 & 4--7 & 91--94\,\% \\
+heavy-SOC & 122--136 & 2--3 & $\sim$97\,\% \\
+magnetic & 131--136 & 5--6 & $\sim$96\,\% \\
+covalent Si/Ge & 117--119 & 2--3 & 97--98\,\% \\
+intermetallics & 128--152 & 5--7 & 95--97\,\% \\
+TiSe$_2$ (layered) & 1188--1354 & $\le$100 & $\sim$92\,\% \\
+ionic MgO/NaCl & 171--750 & 2--500 & 33--99\,\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+The magnitude is set by the target's mixing accelerator (a Broyden target polishes a warm start in a few
+iterations; a pure-linear target still crawls, e.g.\ 500 vs.\ 750 for MgO/NaCl), so each row is a
+\emph{matched same-mixing} warm-vs-cold comparison and we report per-family, never a single pooled headline.
+Contour caveats are recorded (TiSe$_2$ is coarse-converged only, as the fine contour destabilizes the
+zero-gap semimetal). Coverage, F2-eligibility, warm-vs-cold, savings distribution, the parked-hard-case map,
+and the provenance workflow are in Figs.~1--6 of the v1 synthesis package.
+
+\paragraph{Limitations.} PotentialBank v1 supports \textbf{same-structure reuse only}; it is \emph{not} a
+cross-material transfer claim and \emph{not} a guaranteed acceleration (donor$\equiv$target geometry,
+chemistry, and settings; savings depend on structure/mixing/contour). CPA/doped/disordered and BdG are out of
+scope. Nine hard cases are parked with root causes (MoS$_2$ and NbS$_2$ NACLSD, WSe$_2$ SOC contour/EMIN
+instability, TaS$_2$ SOC-NaN, TiAl VERTEX3D, Bi$_2$Te$_3$/Bi$_2$Se$_3$ hard-convergence, CaF$_2$/LiF). The
+warm-start outputs are benchmarks and are \emph{not} themselves certified as donors.
+
 \section{Status and roadmap}
 \label{sec:status}
 \textbf{Complete and validated:} the framework and its pure-numpy artifact; the conformal (Mondrian)
@@ -476,8 +531,10 @@ the primary cohort, does not transfer across materials, and its conformal guaran
 scorer on the primary cohort is RMS@10, and any campaign must recalibrate the abort threshold on its own
 converged runs and compare model vs.\ RMS@10 before enabling abort.
 \textbf{Remaining modeling gap:} late-stall detection (largely missed by the early window, for both the
-model and RMS@10). \textbf{L2/L3} (mixing search, warm start) build on this infrastructure and are
-estimated by the pre-registered campaigns.
+model and RMS@10). \textbf{L3 (warm start) is delivered} as PotentialBank~v1 (Sec.~\ref{sec:potbank}): 237
+certified single-structure donors across 8 families with measured same-structure savings; \textbf{L2}
+(mixing search) remains estimated by the pre-registered campaigns. PotentialBank~v1 is same-structure reuse
+only --- no cross-material transfer, no guaranteed acceleration.
 
 \appendix
 \section{Result tables}

@@ -1,0 +1,43 @@
+compat_class,n_donors,families
+nspin1_lmax2_soc0,9,ionic_rocksalt|simple_metals
+nspin1_lmax2_soc0_emptysphere,4,covalent_emptysphere
+nspin1_lmax3_soc0,21,ordered_intermetallic|simple_metals
+nspin1_lmax3_soc0_layered,2,metallic_layered_chalcogenide
+nspin2_lmax3_soc0,17,magnetic|ordered_intermetallic
+nspin2_lmax3_soc1,24,heavy_soc
+"{""code_family"": ""standard"", ""nspin"": 1, ""soc"": false, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": null, ""mesh"": ""[484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 524, 578, 552, 578, 579, 573, 580, 579, 630, 639, 639, 654, 616, 654, 641, 711, 711, 690, 691, 690, 536, 591, 537, 591, 573, 568, 568, 573, 484, 484, 484, 484, 484, 484, 484, 484]""}",1,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 1, ""soc"": false, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": null, ""mesh"": ""[484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484, 484]""}",4,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": false, ""cpa"": false, ""lmax"": ""2"", ""ncheb"": null, ""mesh"": ""[548, 548, 563, 563, 563, 563, 534, 534]""}",51,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": false, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": ""12"", ""mesh"": ""[609, 609, 609, 609, 609, 609, 609, 609]""}",2,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": false, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": ""12"", ""mesh"": ""[609, 609, 609, 609, 609, 609]""}",2,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": false, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": ""12"", ""mesh"": ""[615, 615, 615, 615, 615, 615, 615, 615, 615]""}",3,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": false, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": ""12"", ""mesh"": ""[615, 615, 615, 615, 615, 615, 615, 615]""}",3,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": false, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": ""12"", ""mesh"": ""[615, 615]""}",3,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": false, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": null, ""mesh"": ""[534, 563, 548, 563, 534, 563, 548, 563, 534, 563, 548, 563, 534, 563, 548, 563]""}",2,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": false, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": null, ""mesh"": ""[548, 548, 563, 563, 563, 563, 534, 534]""}",15,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": false, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": null, ""mesh"": ""[604, 604, 640, 640, 584]""}",2,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": false, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": null, ""mesh"": ""[609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609]""}",1,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": false, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": null, ""mesh"": ""[609, 609, 609, 609, 609, 609, 609, 609]""}",6,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": false, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": null, ""mesh"": ""[609, 609, 609, 609, 609, 609]""}",3,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": false, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": null, ""mesh"": ""[615, 615]""}",2,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": false, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": null, ""mesh"": ""[616, 616, 616, 616, 616, 616, 616, 616, 616, 616]""}",1,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": false, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": null, ""mesh"": ""[616, 616, 616, 616, 616, 616]""}",1,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": false, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": null, ""mesh"": ""[619, 619, 619, 619, 619, 619, 619, 619]""}",7,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": false, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": null, ""mesh"": ""[619, 619, 619, 619, 619, 619]""}",3,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": false, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": null, ""mesh"": ""[650, 650, 650, 650, 650, 650, 650, 650]""}",3,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": false, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": null, ""mesh"": ""[650, 650, 650, 650, 650, 650]""}",5,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": true, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": ""12"", ""mesh"": ""[534, 563, 548, 563, 534, 563, 548, 563, 534, 563, 548, 563, 534, 563, 548, 563]""}",2,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": true, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": ""12"", ""mesh"": ""[609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609]""}",1,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": true, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": ""12"", ""mesh"": ""[609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609]""}",1,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": true, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": ""12"", ""mesh"": ""[609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609, 609]""}",1,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": true, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": ""12"", ""mesh"": ""[609, 609, 609, 609, 609, 609, 609, 609]""}",6,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": true, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": ""12"", ""mesh"": ""[609, 609, 609, 609, 609, 609]""}",4,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": true, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": ""12"", ""mesh"": ""[615, 615, 615, 615, 615, 615, 615, 615, 615]""}",3,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": true, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": ""12"", ""mesh"": ""[615, 615, 615, 615, 615, 615, 615, 615]""}",8,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": true, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": ""12"", ""mesh"": ""[615, 615]""}",1,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": true, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": ""12"", ""mesh"": ""[619, 619, 619, 619, 619, 619, 619, 619]""}",2,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": true, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": ""12"", ""mesh"": ""[619, 619, 619, 619, 619, 619]""}",1,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": true, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": ""12"", ""mesh"": ""[623, 623, 623, 623, 623, 623, 623, 623, 623, 623, 623, 623, 623, 623, 623, 623, 623, 623, 623, 623]""}",1,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": true, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": ""12"", ""mesh"": ""[623, 623, 623, 623, 623, 623, 623, 623, 623, 623]""}",1,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": true, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": ""12"", ""mesh"": ""[650, 650, 650, 650, 650, 650, 650, 650]""}",4,E1_NbSe2_Bi
+"{""code_family"": ""standard"", ""nspin"": 2, ""soc"": true, ""cpa"": false, ""lmax"": ""3"", ""ncheb"": ""12"", ""mesh"": ""[650, 650, 650, 650, 650, 650]""}",4,E1_NbSe2_Bi

@@ -29,10 +29,21 @@ reports/
                           + D1b metrics/scores (JSON/CSV) + figures/
   stage_records/          key stage reports: final freeze, pilot closure, D0 inventory, D1 held-out
                           replay, D1-QC, D1b clean benchmark, report-rewrite summary
+  potentialbank_v1/       PotentialBank v1 (L3): manifest + tables + figures + synthesis/claim-ladder reports
+src/kkr_convergence_advisor/   offline retrieval-based advisor; data/ = advisor_index_v1.json + example tips
 preregistrations/         PREREG_common + Vehicle A/B (historical; superseded — see the report)
 proposals/                project proposals (proposal_01 = ML-accelerated SCF convergence)
 legacy/lstm_restart/      the previous LSTM SCF-restart tool (preserved, superseded by this project)
 ```
+
+## PotentialBank v1 (L3 warm-start)
+Separate, complementary to `ml_assist` (L1): a **certified catalog of single-structure converged KKR
+potentials** for **same-structure SCF warm-start reuse** — **237 unique donors** (238 nodes) across **8
+families / 35 materials**, **33 F2-eligible**. Injecting a certified donor as the start potential cuts
+iterations-to-converge by ~91–99% on a converging target (per-family, mixing/contour-qualified;
+donor-choice-independent). Admission is byte-exact E1 certification (Z-sequence, NATYP, non-CPA/BdG, 3-way
+SHA). **Same-structure reuse only — no cross-material transfer, no guaranteed acceleration; CPA/BdG out of
+scope.** See [`POTENTIALBANK_V1.md`](POTENTIALBANK_V1.md) and `reports/potentialbank_v1/`.
 
 ## Install (development)
 ```bash
