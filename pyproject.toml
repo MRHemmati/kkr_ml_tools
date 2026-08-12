@@ -29,3 +29,4 @@ where = ["src"]
 
 [tool.setuptools.package-data]
 aiida_kkr_mlassist = ["models/*.npz", "models/*.json", "models/*.md"]
+kkr_convergence_advisor = ["data/*.json", "README.md"]

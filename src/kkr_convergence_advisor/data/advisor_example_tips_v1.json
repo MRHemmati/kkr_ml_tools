@@ -1,0 +1,78 @@
+{
+  "version": "v1",
+  "index_sha256": "c3a32ce08a11",
+  "tips": [
+    {
+      "tip_type": "donor_start",
+      "material": "MgO",
+      "evidence_level": "A (exact structure)",
+      "n_supporting_runs": 2,
+      "confidence": "high",
+      "recommendation": "Warm-start from a certified MgO donor (sha 917b3bea or 1858f32c) via startpot_overwrite; prefer a Broyden target.",
+      "reason": "2 certified same-structure donors; measured 6 vs 178 iters (97%) on a Broyden target (33% on linear)."
+    },
+    {
+      "tip_type": "donor_start",
+      "material": "NaCl",
+      "evidence_level": "A (exact structure)",
+      "n_supporting_runs": 2,
+      "confidence": "high",
+      "recommendation": "Warm-start from a certified NaCl donor (68ccf55e or cb742fd6); Broyden target.",
+      "reason": "2 certified donors; measured 2 vs 171 iters (99%) Broyden target (33% linear). Rocksalt no-empty-sphere."
+    },
+    {
+      "tip_type": "donor_start",
+      "material": "Si",
+      "evidence_level": "A (exact structure)",
+      "n_supporting_runs": 2,
+      "confidence": "high",
+      "recommendation": "Warm-start from a certified Si donor (diamond + 2 explicit empty spheres, Z-seq [14,14,0,0]).",
+      "reason": "2 certified empty-sphere donors; measured 2 vs 119 iters (98%). Empty spheres are explicit/certified."
+    },
+    {
+      "tip_type": "donor_start",
+      "material": "TiSe2",
+      "evidence_level": "A (exact structure)",
+      "n_supporting_runs": 2,
+      "confidence": "medium",
+      "recommendation": "Warm-start from a certified TiSe2 donor (coarse contour); use single-segment gentle mixing.",
+      "reason": "2 coarse-converged donors; warm <=100 vs ~1188-1354 cold. CAVEAT: 0-gap semimetal; fine contour destabilizes -> coarse only."
+    },
+    {
+      "tip_type": "donor_start",
+      "material": "Fe/Ni/Co",
+      "evidence_level": "A (exact structure)",
+      "n_supporting_runs": 2,
+      "confidence": "high",
+      "recommendation": "Warm-start magnetic runs from a certified Fe/Ni/Co donor (NSPIN=2, LINIPOL init).",
+      "reason": "2 certified donors each; warm 5-6 vs ~131-136 iters (~96%); moments basin-matched, direction-symmetric."
+    },
+    {
+      "tip_type": "donor_start",
+      "material": "Au/W/Pt/Sb/Pb (heavy-SOC)",
+      "evidence_level": "A (exact structure)",
+      "n_supporting_runs": 2,
+      "confidence": "high",
+      "recommendation": "Warm-start heavy-SOC runs from a certified donor; recipe NCHEB=12 + <USE_CHEBYCHEV_SOLVER>, R_LOG 0.6 (0.8 Pb), voronoi Cheby-free.",
+      "reason": "2 certified donors each; warm 2-3 vs 122-136 iters (~97%). SOC routing must be KKR-only (voronoi Chebyshev-free)."
+    },
+    {
+      "tip_type": "unsafe_warning",
+      "material": "WSe2",
+      "evidence_level": "parked",
+      "n_supporting_runs": 1,
+      "confidence": "n/a",
+      "recommendation": "Do NOT expect a WSe2 donor: setup OK but SCF is unstable (heavy-SOC contour/EMIN) and ~70 min/iter on th1.",
+      "reason": "Charge-neutrality bounces 6.6->1.3->6.1; process paused. Needs EMIN/contour work + faster hardware. No donor available."
+    },
+    {
+      "tip_type": "unsafe_warning",
+      "material": "MoS2",
+      "evidence_level": "parked",
+      "n_supporting_runs": 1,
+      "confidence": "n/a",
+      "recommendation": "Do NOT use the MP0 MoS2 cell (rhombohedral or conventional): Voronoi NACLSD (1502/1615), no donor.",
+      "reason": "Acute primitive AND 9-atom conventional cell both exceed NACLSD; needs a 2H polytype or larger-NACLSD binary."
+    }
+  ]
+}
