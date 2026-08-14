@@ -5,8 +5,8 @@ Ordered steps to turn the current branch into a citable release. **None of these
 
 | # | step | status now | note |
 |---|---|---|---|
-| 0 | **Fill author/affiliation/CRediT/acknowledgments** | ⚠️ TODO (author) | `main.tex` has placeholders (`\author{...\thanks{TODO}}`, CRediT section, Acknowledgments). Fill name/affiliation/email/ORCID/CRediT/funding before submission. |
-| 1 | **Choose/verify license** | ✅ **DONE (Z1)** | `LICENSE` (MIT, "Copyright (c) 2026 M. R. Hemmati") added at repo root; matches `pyproject.toml`. |
+| 0 | **Fill author/affiliation/CRediT/acknowledgments** | ✅ mostly done (Z4) | Sole author Mohammad Hemmati; affiliations, email, **ORCID 0009-0006-4205-5706**, CRediT, competing-interest, and ML4Q + High-Tech Agenda funding all filled. **Only remaining:** computing-time (iffslurm) acknowledgment. |
+| 1 | **Choose/verify license** | ✅ **DONE** | `LICENSE` (MIT, "Copyright (c) 2026 Mohammad Hemmati") added at repo root; matches `pyproject.toml` and the manuscript author. |
 | 2 | **Run tests** | ✅ offline tests pass | `PYTHONPATH=src python tests/*.py` (advisor 11/11 + 6 more PASS; `test_mondrian` needs `[aiida]` extra). |
 | 3 | **Build wheel/sdist** | ☐ not built here | `python -m build` → `dist/*.whl`, `dist/*.tar.gz`. (A prior wheel `aiida_kkr_mlassist-0.1.1` exists from earlier; rebuild before release.) |
 | 4 | **Version wording** | ✅ **RESOLVED (Z1)** | Not a bug: package `aiida-kkr-mlassist` `0.1.1` and the data release *PotentialBank v1* are versioned independently. Stated explicitly in `main.tex` (availability §) so reviewers do not read it as an inconsistency. Bump only if desired. |
@@ -31,5 +31,29 @@ Ordered steps to turn the current branch into a citable release. **None of these
 7. **Submit the CPC CPiP package** (manuscript PDF, highlights, keywords, Program Summary, cover letter,
    declarations) through the Elsevier editorial system.
 
-**Remaining blockers (author-supplied):** front-matter author/CRediT/acknowledgment content, and the Zenodo DOI.
+**Remaining blockers (author-supplied):** only the **computing-time (iffslurm) acknowledgment**, and the Zenodo
+DOI. (Author name/affiliation/email/ORCID/CRediT/competing-interest/ML4Q+High-Tech funding are filled.)
 License, version wording, and the stray tarball are resolved (Z1).
+
+## Final readiness table (Z3)
+| item | status | owner |
+|---|---|---|
+| LICENSE (MIT) | ✅ ready | — |
+| Author name / affiliation / email | ✅ ready (filled from Paper 3) | — |
+| Version wording (0.1.1 pkg vs v1 data) | ✅ ready | — |
+| Stray `.tar` removed / `*.tar` ignored | ✅ ready | — |
+| Wheel + sdist build (dry-run) | ✅ ready (Z2; rebuild at release) | — |
+| Clean-venv smoke + offline tests | ✅ ready | — |
+| PDF compiles (19 pp, 0 undefined) | ✅ ready | — |
+| Zenodo / GitHub-release / cover-letter drafts | ✅ ready | — |
+| Real-release command plan | ✅ ready (`REAL_RELEASE_COMMAND_PLAN.md`) | — |
+| **ORCID** | ✅ ready (0009-0006-4205-5706) | — |
+| **Author list + CRediT roles** | ✅ ready — **sole author** Mohammad Hemmati; CRediT filled | — |
+| **Funding / acknowledgment text** | ⚠️ partial — ML4Q + High-Tech Agenda filled; **computing-time (iffslurm) allocation TODO** | author |
+| **Release tag `v1.0.0`** | ⬜ blocked (needs approval; not created) | approval |
+| **Zenodo DOI** | ⬜ blocked (minted at release) | approval |
+| **CPC submission** | ⬜ blocked (Elsevier system) | approval |
+
+**Verdict:** all machine-preparable items are ready, and author metadata (sole author Mohammad Hemmati, ORCID,
+CRediT, competing interest, ML4Q + High-Tech Agenda funding) is filled. The only remaining inputs are the
+**computing-time (iffslurm) acknowledgment** and the **approval-gated release actions** (tag, DOI, submission).

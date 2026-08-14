@@ -1,6 +1,7 @@
 # Cover letter (draft)
 
-*(Draft — placeholders in [brackets]. Not sent.)*
+*(Draft — sole author Mohammad Hemmati; not sent. Fill the journal-specific date/editor salutation at
+submission.)*
 
 To the Editors, Computer Physics Communications
 
@@ -34,12 +35,14 @@ without HPC, a frozen model set with manifests, the PotentialBank v1 manifest/ta
 and two walkthrough notebooks (one AiiDA-free; one submission tutorial that is safe-by-default and submits
 nothing unless the reader explicitly opts in).
 
-This work has not been published elsewhere and is not under consideration by another journal. The authors
-declare no competing interests. We suggest reviewers with expertise in KKR/Green-function DFT, AiiDA workflow
+This work has not been published elsewhere and is not under consideration by another journal. The author
+declares no competing interests. I suggest reviewers with expertise in KKR/Green-function DFT, AiiDA workflow
 engineering, and machine learning for electronic structure.
 
 Thank you for your consideration.
 
 Sincerely,
-[Author name(s)], [affiliation], on behalf of all authors
-[contact email]
+Mohammad Hemmati\
+Peter Grünberg Institut and Institute for Advanced Simulation, Forschungszentrum Jülich and JARA, D-52425
+Jülich, Germany; RWTH Aachen University, D-52062 Aachen, Germany\
+mohammad.hemmati@rwth-aachen.de · ORCID 0009-0006-4205-5706

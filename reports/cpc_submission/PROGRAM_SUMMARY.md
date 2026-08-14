@@ -12,8 +12,8 @@ CPC requires a Program Summary immediately after the abstract — a LaTeX versio
 
 **Code Ocean capsule:** *TODO (optional; not created — no compute/upload performed).*
 
-**Licensing provisions:** MIT (declared in `pyproject.toml`). **TODO: add a top-level `LICENSE` file** (currently
-absent); CPC requires an approved open-source license file in the repository.
+**Licensing provisions:** MIT. A top-level `LICENSE` file (MIT, "Copyright (c) 2026 Mohammad Hemmati") is present
+in the repository and consistent with `pyproject.toml`, satisfying CPC's approved-open-source-license requirement.
 
 **Programming language:** Python (pure-`numpy` runtime core; AiiDA/`aiida-kkr` used only inside the daemon for
 submission; LaTeX for the report).
