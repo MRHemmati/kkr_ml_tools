@@ -12,11 +12,16 @@
         backgroundcolor=\color{gray!8},columns=fullflexible}
 \newcommand{\code}[1]{\texttt{#1}}
 
-\title{\textbf{Calibrated Convergence Control for KKR\,/\,BdG Green's-Function DFT}\\[3pt]
-\large An AiiDA-native early-abort framework (\texttt{ml\_assist}), a live pilot,\\
-and a held-out benchmark}
-\author{Prepared for collaboration hand-off}
-\date{2026-07-21}
+\title{\textbf{Provenance-Certified KKR Convergence Assistance:\\
+\texttt{ml\_assist}, PotentialBank~v1, and Same-Structure Warm Starts}\\[3pt]
+\large An AiiDA-native early-abort framework and a certified potential-reuse bank ---\\
+with a live pilot, a held-out benchmark, and explicitly benchmarked limits}
+\author{%
+% TODO before submission: fill author full name(s), affiliation, email, ORCID.
+M.~R.~Hemmati\thanks{TODO: affiliation; email; ORCID --- to be filled before CPC submission}%
+% \and Co-author name\thanks{affiliation}
+}
+\date{2026-08-13}
 
 \begin{document}
 \maketitle
@@ -40,11 +45,51 @@ vs.\ $0.90$), \emph{does not transfer across materials} (other-material AUC $\ap
 NbSe$_2$-seeded conformal threshold does not transport (realized false-abort $0.47$) --- though
 \textbf{per-cohort recalibration restores} realized $\approx$ target $\alpha$. We conclude that
 \emph{reliable deployment requires per-cohort calibration and strong simple baselines}; the honest,
-provenance-tracked framework --- not model superiority --- is the contribution. Separately, an engineering
+provenance-tracked framework --- not model superiority --- is the contribution.
+We then present \textbf{PotentialBank~v1}, a provenance-certified extension of AiiDA-KKR that realizes the
+warm-start lever: it retrieves, certifies, and reuses compatible \emph{same-structure} converged potentials.
+AiiDA-KKR already provides the restart and \code{potential\_overwrite} primitives; our contribution is the
+\textbf{certification and retrieval layer above them} --- byte-exact potential integrity (three-way SHA-256),
+exact $Z$-sequence\,/\,NATYP compatibility, non-CPA\,/\,non-BdG scope control, and no guessed mapping.
+PotentialBank~v1 is frozen at \textbf{237 unique certified donors (238 nodes)} across \textbf{8 material
+families} and \textbf{33 F2-eligible materials}, with same-structure warm starts cutting SCF iterations
+substantially (per-family, mixing- and contour-qualified). We claim \emph{no cross-material transfer and no
+guaranteed acceleration}: donors reuse the identical structure, and nine hard cases are documented with root
+causes. Separately, an engineering
 effort repaired four cell-inappropriate BdG-workchain defaults, enabling the first end-to-end multi-atom
 BdG run and its memory-scaling number. Everything ships as an installable \code{aiida-kkr-mlassist}
-extension with unit tests and pre-registered success gates.
+extension (with an optional convergence advisor), unit tests, and pre-registered success gates.
 \end{abstract}
+
+\paragraph{Keywords.} KKR Green-function DFT; SCF convergence; AiiDA provenance; potential reuse / warm start;
+conformal prediction; reproducible workflows; certified donor potentials.
+
+\begin{center}\small
+\fbox{\parbox{0.97\linewidth}{
+\textbf{Program summary}\\[2pt]
+\emph{Program title:} \code{aiida-kkr-mlassist} / KKR Convergence Advisor / PotentialBank~v1.\\
+\emph{Developer's repository:} \texttt{https://github.com/MRHemmati/kkr\_ml\_tools} (CPC library link and DOI
+assigned on acceptance).\\
+\emph{Licensing provisions:} MIT (open source).\\
+\emph{Programming language:} Python (pure-\code{numpy} runtime core; AiiDA\,/\,\code{aiida-kkr} used only for
+submission).\\
+\emph{Nature of problem:} KKR SCF convergence wastes HPC time when runs stall or diverge; restarting from a
+converged potential is standard and AiiDA-KKR provides the primitives, but choosing a \emph{compatible,
+provenance-safe} donor is error-prone and unaudited.\\
+\emph{Solution method:} an AiiDA-native, opt-in \code{ml\_assist} early-abort wrapper (pure-\code{numpy} scorer
++ RMS@10 baseline under a per-cohort conformal policy) and \textbf{PotentialBank~v1}, a provenance-graph donor
+catalog admitting potentials only under strict E1 certification --- byte-exact SHA-256 integrity, exact
+$Z$-sequence\,/\,NATYP compatibility, non-CPA\,/\,non-BdG scope, and no guessed mapping --- with an optional
+same-structure warm-start advisor.\\
+\emph{Restrictions:} normal-state, non-CPA for PotentialBank~v1; CPA\,/\,BdG and cross-material prediction are
+not supported; warm-start reuse is same-structure only, with no guaranteed acceleration; raw potentials remain
+in the AiiDA repository (referenced by SHA-256\,/\,provenance).\\
+\emph{Unusual features:} strict provenance certification with byte-exact hashing, a no-guessed-mapping rule,
+per-family same-structure warm-start benchmarks, and a documented catalog of hard cases.\\
+\emph{Additional comments:} PotentialBank~v1 is frozen at 237 unique certified donors (238 nodes) across 8
+families, 33 F2-eligible materials.
+}}
+\end{center}
 
 \tableofcontents
 
@@ -59,10 +104,25 @@ three \emph{acceleration levers}:
   \item[L2 --- probe-and-commit mixing] race a few mixing settings briefly, commit the best.
   \item[L3 --- warm start] reuse a converged potential to halve iterations.
 \end{description}
-This report covers the \textbf{v1 deliverable (L1)}, fully built and validated, plus the infrastructure
-(feature schema, frozen models, conformal policy, package, workchain hardening) that L2/L3 reuse. \textbf{L3
-(warm start) is now realized as PotentialBank~v1} (Sec.~\ref{sec:potbank}): a certified catalog of
-single-structure converged potentials with measured same-structure warm-start savings.
+This report is in three parts. \textbf{Part~1} (Secs.~\ref{sec:goals}--\ref{sec:pilot}) covers
+\code{ml\_assist} --- the early-abort framework (L1), its conformal policy, the live pilot, and the
+leakage-clean held-out replay. \textbf{Part~2} (Sec.~\ref{sec:potbank}) presents \textbf{PotentialBank~v1},
+the realized warm-start lever (L3): a certified catalog of single-structure converged potentials with an
+optional convergence advisor and measured same-structure savings. \textbf{Part~3} (Sec.~\ref{sec:status}
+onward) gives limitations and roadmap. The probe-and-commit mixing search (L2) reuses the same infrastructure
+and remains estimated by the pre-registered campaigns.
+
+\paragraph{Positioning.} KKR restart and potential reuse are \emph{not new}: AiiDA-KKR~\cite{aiidakkr} already
+exposes the low-level primitives --- a KKR calculation can continue from a parent remote folder, automatically
+extracting the converged potential, and the Voronoi step accepts an explicit \code{potential\_overwrite}. Our
+contribution is the \textbf{layer above} these primitives. We introduce a provenance-certified extension of
+AiiDA-KKR that systematically retrieves, validates, and reuses compatible \textbf{same-structure} donor
+potentials for reproducible KKR warm starts, supplemented by an optional convergence advisor whose limits are
+explicitly benchmarked. Concretely: a provenance-graph procedure discovers candidate donors; each is admitted
+only under a strict eligibility policy (byte-exact potential integrity via a three-way SHA-256 match, exact
+$Z$-sequence\,/\,NATYP compatibility, non-CPA and non-BdG scope control, and no guessed mapping); and the
+resulting same-structure warm starts are benchmarked, with hard cases and negative results reported honestly.
+This turns an available mechanism into an auditable, policy-controlled reuse system.
 
 \paragraph{Design principles.} (1) \emph{Opt-in, zero-risk default}: absent an \code{ml\_assist} input the
 workchain behaves identically to stock. (2) \emph{Advisory by default}; abort only when explicitly enabled
@@ -516,7 +576,37 @@ cross-material transfer claim and \emph{not} a guaranteed acceleration (donor$\e
 chemistry, and settings; savings depend on structure/mixing/contour). CPA/doped/disordered and BdG are out of
 scope. Nine hard cases are parked with root causes (MoS$_2$ and NbS$_2$ NACLSD, WSe$_2$ SOC contour/EMIN
 instability, TaS$_2$ SOC-NaN, TiAl VERTEX3D, Bi$_2$Te$_3$/Bi$_2$Se$_3$ hard-convergence, CaF$_2$/LiF). The
-warm-start outputs are benchmarks and are \emph{not} themselves certified as donors.
+warm-start outputs are benchmarks and are \emph{not} themselves certified as donors. For \code{ml\_assist}, the
+early-abort mechanism is validated live but broad ML transfer is \emph{not} proven --- it does not beat a
+simple RMS@10 baseline out-of-sample and requires per-cohort recalibration.
+
+\subsection{Related work}
+\label{sec:relatedwork}
+\textbf{Workflow and provenance.} We build directly on AiiDA-KKR\,/\,JuKKR~\cite{aiidakkr}, which provide the
+KKR restart and \code{potential\_overwrite} primitives our warm start uses. aiida-mlip~\cite{aiidamlip} is a
+sibling AiiDA plugin that applies the same provenance discipline to machine-learned interatomic potentials, a
+different target. \textbf{Predicting quantities to accelerate SCF.} A growing body of work \emph{predicts} an
+electronic-structure quantity to speed up or bypass self-consistency: ChargE3Net~\cite{charge3net} predicts the
+charge density and reports a $26.7\%$ reduction in SCF iterations when initializing DFT on \emph{unseen}
+materials; SALTED~\cite{salted} learns 3D electron densities via density fitting; and
+DeepH\,/\,DeepH-E3~\cite{deeph,deephe3} predict the DFT Hamiltonian directly. mp-pyrho~\cite{pyrho} provides
+representation-independent charge-density regridding and an associated density database. \textbf{Representations
+and MLIP tooling.} DScribe~\cite{dscribe} supplies atomistic descriptors; DP-GEN~\cite{dpgen} performs
+concurrent-learning generation of deep-potential models; dftio~\cite{dftio} standardizes DFT outputs for machine
+learning. \textbf{Where we differ.} These methods \emph{learn to predict} a density, potential, or Hamiltonian
+and, in the best cases, transfer across chemistries. PotentialBank v1 makes \textbf{no prediction and no
+cross-material claim}: it \emph{reuses an existing, certified potential for the identical structure}. The
+novelty is the certification and retrieval policy --- integrity, compatibility, scope, and auditability --- not
+a new physical model or a learned mapping. We are not aware of a verified KKR-specific tool that provides this
+certified same-structure reuse layer.
+
+\paragraph{What is and is not novel.} We do \textbf{not} claim to have invented KKR restart, potential
+overwriting, or SCF warm starting --- those primitives exist in AiiDA-KKR and are standard practice. We do
+\textbf{not} predict potentials, densities, or Hamiltonians, and we make no cross-material transfer claim. What
+is novel is the \textbf{provenance-certified reuse layer}: automated donor discovery over the provenance graph;
+a strict, auditable eligibility policy (byte-exact integrity, exact structural compatibility, non-CPA\,/\,non-BdG
+scope, no guessed mapping); an optional convergence advisor with explicitly benchmarked limits; and honest
+same-structure warm-start benchmarks together with a documented catalog of hard cases and negative results.
 
 \section{Status and roadmap}
 \label{sec:status}
@@ -535,6 +625,47 @@ model and RMS@10). \textbf{L3 (warm start) is delivered} as PotentialBank~v1 (Se
 certified single-structure donors across 8 families with measured same-structure savings; \textbf{L2}
 (mixing search) remains estimated by the pre-registered campaigns. PotentialBank~v1 is same-structure reuse
 only --- no cross-material transfer, no guaranteed acceleration.
+
+\section{Software and data availability}
+\label{sec:availability}
+The software is open source under the \textbf{MIT} license and is available at
+\texttt{https://github.com/MRHemmati/kkr\_ml\_tools} (a tagged release and archival DOI will be minted on
+acceptance and recorded here). The repository ships the installable \code{aiida-kkr-mlassist} package and the
+\code{kkr\_convergence\_advisor}, unit tests, the frozen model artifacts with SHA-256 manifests, the
+PotentialBank~v1 manifest\,/\,tables\,/\,figures, the advisor index, and two walkthrough notebooks. \textbf{Data
+availability:} the derived artifacts (manifests, benchmark tables, model manifests) are included; the raw KKR
+potential files are \emph{not} redistributed --- they remain in the AiiDA provenance store and are referenced by
+byte-exact SHA-256 and provenance handles (\code{seg\_pk}, \code{wc\_pk}, \code{uuid}), so their identity is
+verifiable by anyone with access to that store. Live KKR submissions require the JuKKR codes and the authors'
+AiiDA database and cluster environment.
+\emph{Versioning:} the Python \emph{package} (\code{aiida-kkr-mlassist}) and the \emph{data release}
+(PotentialBank and advisor index) are versioned independently --- the package is at \code{0.1.1}, while the
+certified potential catalog and advisor index are the frozen \emph{PotentialBank~v1} release; these are distinct
+artifacts and the different version labels are intentional, not an inconsistency.
+
+\section{Reproducibility}
+\label{sec:reproducibility}
+Offline, without HPC or AiiDA: install from source (\code{pip install -e .}, \code{numpy}-only core), load the
+advisor index (\code{kkr\_convergence\_advisor.load\_index()}), run the self-asserting unit tests
+(\code{PYTHONPATH=src python tests/*.py}), and execute the two walkthrough notebooks (the submission tutorial is
+safe-by-default and submits nothing). A lightweight smoke test reproduces the headline counts
+($237/238/8/33$); \code{sha256sum -c reports/potentialbank\_v1/MANIFEST.sha256} verifies the synthesis bundle.
+The reviewer-run checklist gives exact commands and expected outputs.
+
+\section*{CRediT author contribution statement}
+\emph{TODO before submission: complete CRediT roles per author (e.g.\ Conceptualization, Methodology, Software,
+Validation, Investigation, Data curation, Writing --- original draft, Writing --- review \& editing).}
+
+\section*{Declaration of competing interest}
+The authors declare that they have no known competing financial interests or personal relationships that could
+have appeared to influence the work reported in this paper.
+
+\section*{Acknowledgments}
+\emph{TODO: funding sources, computing allocations (iffslurm), and collaborators.}
+
+\section*{Use of AI assistance}
+AI coding and writing assistants were used to help draft text, generate code-edit suggestions, and organize
+reports; all scientific decisions, calculations, validation, and final claims were reviewed by the author.
 
 \appendix
 \section{Result tables}
@@ -635,5 +766,35 @@ model & role & features & in-dist.\ AUC\footnotemark[4] \\
 Each artifact ships a JSON manifest (feature names, training-data SHA-256, library versions, creation
 timestamp, golden-parity value) and a model card stating intended use, per-system scope, and the
 Replay-OOF Invariant.
+
+\begin{thebibliography}{99}
+\bibitem{aiidakkr} P.~R\"u{\ss}mann, F.~Bertoldo, and S.~Bl\"ugel, ``The AiiDA-KKR plugin and its application to
+  high-throughput impurity embedding into a topological insulator,'' \emph{npj Comput.\ Mater.} \textbf{7}, 13
+  (2021), DOI 10.1038/s41524-020-00482-5. Software (JuKKR): \texttt{https://github.com/JuDFTteam/aiida-kkr};
+  docs \texttt{https://aiida-kkr.readthedocs.io} (User guide: Calculations, Workflows).
+\bibitem{aiidamlip} STFC, \emph{aiida-mlip: machine-learned interatomic potentials in AiiDA} (software
+  documentation, BSD-3). \texttt{https://github.com/stfc/aiida-mlip}; docs
+  \texttt{https://stfc.github.io/aiida-mlip/}.
+\bibitem{dscribe} L.~Himanen \emph{et al.}, ``DScribe: Library of descriptors for machine learning in materials
+  science,'' \emph{Comput.\ Phys.\ Commun.} \textbf{247}, 106949 (2020); arXiv:1904.08875.
+\bibitem{dpgen} Y.~Zhang \emph{et al.}, ``DP-GEN: A concurrent learning platform for the generation of reliable
+  deep learning based potential energy models,'' \emph{Comput.\ Phys.\ Commun.} \textbf{253}, 107206 (2020);
+  arXiv:1910.12690.
+\bibitem{dftio} DeePModeling community, \emph{dftio: transcribing DFT outputs into ML-ready formats} (software
+  documentation, MIT). \texttt{https://github.com/deepmodeling/dftio}; docs
+  \texttt{https://deepmodeling.github.io/dftio/}.
+\bibitem{pyrho} J.~Shen \emph{et al.}, ``A representation-independent electronic charge density database for
+  crystalline materials,'' \emph{Sci.\ Data} \textbf{9}, 661 (2022); arXiv:2107.03540. Software:
+  \texttt{https://github.com/materialsproject/pyrho}.
+\bibitem{charge3net} T.~Koker \emph{et al.}, ``Higher-order equivariant neural networks for charge density
+  prediction in materials,'' \emph{npj Comput.\ Mater.} \textbf{10}, 138 (2024); arXiv:2312.05388.
+\bibitem{salted} A.~M.~Lewis, A.~Grisafi, M.~Ceriotti, and M.~Rossi, ``Learning electron densities in the
+  condensed phase'' (SALTED), \emph{J.\ Chem.\ Theory Comput.} \textbf{17}, 7203 (2021), DOI
+  10.1021/acs.jctc.1c00576; arXiv:2106.05364. Docs \texttt{https://salted.readthedocs.io}.
+\bibitem{deeph} H.~Li \emph{et al.}, ``Deep-learning density functional theory Hamiltonian for efficient ab
+  initio electronic-structure calculation,'' \emph{Nat.\ Comput.\ Sci.} \textbf{2}, 367 (2022).
+\bibitem{deephe3} X.~Gong \emph{et al.}, ``General framework for E(3)-equivariant neural network representation
+  of density functional theory Hamiltonian'' (DeepH-E3), \emph{Nat.\ Commun.} \textbf{14}, 2848 (2023).
+\end{thebibliography}
 
 \end{document}

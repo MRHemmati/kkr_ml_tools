@@ -48,3 +48,6 @@ config.json
 kkr_scf_full_dataset*
 # (frozen model .npz shipped inside the package are force-added; see below)
 !src/aiida_kkr_mlassist/models/*.npz
+
+# Build/report tarballs (never commit; redundant with tracked source)
+*.tar
